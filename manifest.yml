@@ -1,0 +1,10 @@
+---
+applications:
+- name: myadapp     #name of the project
+  memory: 512M
+  path: target/MyAdApp-0.0.1-SNAPSHOT.war   #if not specified it will upload all the files
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git#v3.9  #runtime support
+  env:    #we can config environment here
+      # Use the non-blocking /dev/urandom instead of the default to generate random numbers.
+      # This may help with slow startup times, especially when using Spring Boot.
+      JAVA_OPTS: -Djava.security.egd=file:///dev/./urandom
